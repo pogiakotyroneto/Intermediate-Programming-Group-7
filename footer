@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About Us-DND</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  margin-bottom: auto;
+}
+
+.aboutus_container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.row > div {
+  flex: 1 0 10%;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: #EFEDED;
+}
+
+.row p{
+margin-right: 150px;
+margin-left: 150px;
+font-size: 20px;
+}
+
+.header {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 100px;
+  margin-top: 50px;
+  text-align: center;
+  color: #D79922;
+  font-family: 'League Spartan', sans-serif;
+}
+
+
+ .popup-content p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.title{
+  position: absolute;
+  top:0;
+  left: 45%;
+  margin-right: auto;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.picture-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+
+.picture-frame {
+  flex: 0 0 30%;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-right: auto; 
+  margin-left: auto; 
+
+}
+
+.picture {
+  width: 100%;
+  height: 350px;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.subtext {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.company-title {
+  font-size: 15px;
+  margin-top: 2px;
+}
+
+#about_title {
+  margin-top: 60px;
+  text-align: center;
+
+}
+
+
+.popupContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  display: none;
+
+}
+
+/* Style for the pop-up box */
+.popup-box {
+  max-width: 800px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: auto;
+}
+
+/* Close button style */
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background-color: #fff;
+  border-radius: 50px;
+  width: 15px;
+  height: 15px;
+  padding: 5px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* Style for the content inside the pop-up */
+.popup-content {
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 25px;
+  background-color: #fff;
+  opacity: 0.95;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: auto;
+  width: 90%;
+  margin-right: auto; /* Set right margin to auto */
+  margin-left: auto; /* Set left margin to auto */
+}
+</style>
+
+<?php include 'Navbar.php';?>
+
+</head>
+<body>
+
+  <div class="aboutus_container">
+    <div class="row">
+      <div id="about_title">
+        <div class="title"><h2>ABOUT US</h2></div> <br>
+        <p>The brilliant and varied members of our team are brought together for a similar goal. We cooperate, make use of our combined talents, and foster a culture of learning and development. Together, we pursue excellence and add value to all that we do.</p>
+        <h1 class="header">THIS IS US, THIS IS DND</h1>
+      </div>
+    </div>
+    <div class="picture-container">
+      <div class="picture-frame" onclick="openPopup(1)">
+        <div class="picture" style="background-image: url('../imgsrc/team/charles.png');"></div>
+        <div class="subtext">Charles Vincent Laureano</div>
+        <div class="company-title">Team Leader</div>
+      </div>
+      <div class="picture-frame" onclick="openPopup(2)">
+        <div class="picture" style="background-image: url('../imgsrc/team/gerald.jpeg');"></div>
+        <div class="subtext">Gerald James Martinez</div>
+        <div class="company-title">Programmer</div>
+      </div>
+      <div class="picture-frame" onclick="openPopup(3)">
+        <div class="picture" style="background-image: url('../imgsrc/team/tyrone.jpeg');"></div>
+        <div class="subtext">Tyrone Eudor Indefenso</div>
+        <div class="company-title">Programmer</div>
+      </div>
+      <div class="picture-frame" onclick="openPopup(4)">
+        <div class="picture" style="background-image: url('../imgsrc/team/franz.png');"></div>
+        <div class="subtext">Franzelle May B. Herradura</div>
+        <div class="company-title">Business Manager</div>
+      </div>
+      <div class="picture-frame" onclick="openPopup(5)">
+        <div class="picture" style="background-image: url('../imgsrc/team/iziah.png');"></div>
+        <div class="subtext">Iziah Yabut</div>
+        <div class="company-title">Tester</div>
+      </div>
+      
+
+
+      <!-- Pop-up Container for each image -->
+      <div class="popupContainer" id="popupContainer1">
+        <div class="popup-box">
+          <span class="popup-close" onclick="closePopup(1)">&times;</span>
+          <div class="popup-content">
+            <h2>Charles Vincent Laureano</h2>
+            <p>Charles Vincent Laureano is an accomplished student of Information Technology at the prestigious Pamantasan ng Lungsod ng Maynila. As the dedicated leader of the DND project, he possesses an unwavering commitment to success and a passion for overcoming challenges in the field.
+            <br><br>
+            With a relentless pursuit of excellence, Charles has immersed himself in the world of technology, consistently expanding his knowledge and skills. His genuine enthusiasm for the project shines through as he fearlessly tackles every obstacle that comes his way.
+            <br><br>
+            As a project manager, Charles has honed his ability to navigate complex tasks and coordinate team efforts efficiently. He understands the importance of effective communication and collaboration, inspiring his team members to reach their full potential. With his strong leadership skills, he fosters an environment that encourages creativity and innovation.</p>
+          </div>
+        </div>
+      </div>
+      <div class="popupContainer" id="popupContainer2">
+        <div class="popup-box">
+          <span class="popup-close" onclick="closePopup(2)">&times;</span>
+          <div class="popup-content">
+            <h2>Gerald James Martinez</h2>
+            <br>
+            <p>My name is Gerald James Martinez, a BSIT student from Pamantasan ng Lungsod ng Maynila known for being a highly motivated and results-oriented professional. Throughout my lifetime, I have consistently demonstrated a passion for programming, coupled with a drive for continuous learning and improvement.
+              <br><br>
+            Within my short years of experiences, I have developed a comprehensive skill set that includes various key skills and qualifications which are relevant to my career path in the technological space. These experiences have not only enhanced my technical abilities but have also honed my problem-solving, communication, and leadership skills. I am equipped with a passion for emerging technologies and a drive for continuous learning, you are ready to contribute to the success of an organization and further develop your expertise..</p>
+            
+          </div>
+        </div>
+      </div>
+      <div class="popupContainer" id="popupContainer3">
+        <div class="popup-box">
+          <span class="popup-close" onclick="closePopup(3)">&times;</span>
+          <div class="popup-content">
+            <h2>Tyrone Eudor Indefenso</h2>
+            <p>I am Tyrone Indefenso, a student of Information Technology from the Pamantasan ng Lungsod ng Maynila that is focused in its goals, specially in this very competetive field. <br>
+            I am diversifying my reach in terms of what I can do in this field as skills is very valuable not only in this career, but in all aspect of our society. Eversince I was introduced to this field, I vow to learn more and not stop learning as this will make me more knowlesgable and relevant. This field helped me spread my wings and introduced me to what DND is all about. Using the knowledge that we have gathered is the essence of what we do in this life.</p>
+          </div>
+        </div>
+      </div>
+      <div class="popupContainer" id="popupContainer4">
+        <div class="popup-box">
+          <span class="popup-close" onclick="closePopup(4)">&times;</span>
+          <div class="popup-content">
+            <h2>Franzelle May B. Herradura</h2>
+            <p>As an enthusiastic and daring individual, I am eager to embark on a journey of discovery and exploration to uncover the marvels of existence. I possess an insatiable thirst for knowledge and eagerly welcome any occasion to expand my understanding, develop my skills, and establish enduring recollections. The fundamental aspects of my character revolve around empathy and kindness, which I endeavor to utilize to impact the individuals in my vicinity positively.</p>
+          </div>
+        </div>
+      </div>
+      <div class="popupContainer" id="popupContainer5">
+        <div class="popup-box">
+          <span class="popup-close" onclick="closePopup(5)">&times;</span>
+          <div class="popup-content">
+            <h2>Iziah Yabut</h2>
+            <p>As an enthusiastic and daring individual, I am eager to embark on a journey of discovery and exploration to uncover the marvels of existence. I possess an insatiable thirst for knowledge and eagerly welcome any occasion to expand my understanding, develop my skills, and establish enduring recollections. The fundamental aspects of my character revolve around empathy and kindness, which I endeavor to utilize to impact the individuals in my vicinity positively.</p>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+
+ <section>
+    <div class="footer-container">
+      <?php include 'footer.php';?>
+    </div>
+  </section>
+
+<script>
+  function openPopup(id) {
+  var popupContainer = document.getElementById(`popupContainer${id}`);
+  popupContainer.style.display = "flex";
+}
+
+function closePopup(id) {
+  var popupContainer = document.getElementById(`popupContainer${id}`);
+  popupContainer.style.display = "none";
+}
+
+</script>
+</body>
+</html>
