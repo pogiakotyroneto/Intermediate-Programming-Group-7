@@ -1,0 +1,43 @@
+<?php
+// Replace the following variables with your actual database credentials
+$hostname = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'interprog';
+
+// Create a new MySQLi object and establish the database connection
+$mysqli = new mysqli($hostname, $username, $password, $database);
+
+// Check the connection for errors
+if ($mysqli->connect_error) {
+    die('Connection Error: ' . $mysqli->connect_error);
+}
+
+// Modify the table structure to add an auto-incrementing user ID colum
+
+// Handle the form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve the form data
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+
+    // Prepare the SQL statement to insert the data into the database
+    $stmt = $mysqli->prepare("INSERT INTO inter_signup (firstName, lastName, email, password) VALUES (?,?,?,?)");
+    $stmt->bind_param("ssss", $firstName, $lastName, $email, $password);
+
+    // Execute the statement
+    if ($stmt->execute()) {
+        require_once(dirname(__FILE__).'/Success2.php');
+    } else {
+       require_once(dirname(__FILE__).'/Wrong3.php');
+    }
+
+    // Close the statement
+    $stmt->close();
+}
+
+// Close the database connection
+$mysqli->close();
+?>
