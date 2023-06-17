@@ -1,0 +1,49 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "interprog";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve email and password from form submission
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+// Prepare and execute a database query for each table to check if the credentials are valid
+$tables = ['inter_signup'];
+
+foreach ($tables as $table) {
+    $sql = "SELECT * FROM $table WHERE email = '$email' AND password = '$password'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Valid credentials, set a session variable to keep the user logged in
+        session_start();
+        $_SESSION['loggedin'] = true;
+
+        // Redirect the user to the appropriate page
+        header("Location: index.php"); // Replace with the desired page after login
+        exit();
+    }
+}
+
+// Invalid credentials, display an error message
+require_once(dirname(__FILE__).'/Wrong2.php');
+
+// Check if the logout button is clicked
+if (isset($_POST['logout'])) {
+    // Destroy the session and redirect to the login page or any other desired page
+    session_destroy();
+    header("Location: loginpage.php");
+    exit();
+}
+
+// Close the database connection
+$conn->close();
+?>
