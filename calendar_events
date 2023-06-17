@@ -1,0 +1,42 @@
+<?php
+$servername = 'localhost'; // replace with your server name
+$username = 'root'; // replace with your username
+$password = ''; // replace with your password
+$dbname = 'interprog'; // replace with your database name
+
+// Create a new connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve events from the database
+$sql = "SELECT event_name as title, date, time, event_location as location, event_note as note FROM event_appointment";
+$result = $conn->query($sql);
+
+// Prepare the array to store the events
+$events = array();
+
+// Check if there are any events in the result
+if ($result->num_rows > 0) {
+    // Loop through each row and add it as an event
+    while ($row = $result->fetch_assoc()) {
+        $event = array(
+            'title' => $row['title'],
+            'start' => $row['date'] . 'T' . $row['time'], // Combine date and time in ISO 8601 format
+            'location' => $row['location'],
+            'note' => $row['note']
+        );
+        $events[] = $event;
+    }
+}
+
+// Close the database connection
+$conn->close();
+
+// Convert the events array to JSON and send the response
+header('Content-Type: application/json');
+echo json_encode($events);
+?>
