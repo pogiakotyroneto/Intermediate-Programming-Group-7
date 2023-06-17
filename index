@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DND Home</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+
+</head>
+<body>
+ <div class="home">
+    <?php include 'Navbar.php';?>
+    <section class="hero">
+      <div class="text">
+        <h1>DO NOT DISTURB</h1>
+        <p>Greetings and welcome to the official website of DO NOT DISTURB. The website is an all-inclusive platform that provides users with extensive information regarding the application, functionalities, and advantages. This resource contains comprehensive information to optimize the functionality of our application.
+</p>
+        <hr id="hr1" size="2" width="25%" color="black"><br>
+        <a href="Appointment.php" class="button">Get Started</a> <br>
+      </div>
+    </section>
+  </div>
+  </section>
+</div>
+
+
+<section id="sec1">
+   <h1 class="header1">YOUR PENDING APPOINTMENTS</h1>
+   <?php include 'Calendar2.php';?>
+</section>
+
+<section class="services-section">
+  <div class="container">
+    <br><br><h2>Our Services</h2>
+    <div class="services-list">
+      <div class="service">
+        <i class="fa fa-bar-chart fa-3x"></i>
+        <h3>Reporting and Activity Monitoring</h3>
+        <ul>
+          <li>The system records the actions executed within each designated time interval.</li>
+          <li>Individuals can access a concise overview detailing the allocation of their time, encompassing the length and categorization of their engagements.</li>
+          <li>This characteristic fosters transparency and facilitates users' comprehension of their time allocation.</li>
+        </ul>
+      </div>
+      <div class="service">
+        <i class="fa fa-calendar fa-3x"></i>
+        <h3>System for Reservations and Invites</h3>
+        <p>
+          <ul>
+            <li>Individuals can extend invitations to their acquaintances or designated groups to reserve their allotted time intervals.</li>
+            <li>Incorporating information regarding the objective of the gathering or event is a feasible option when drafting invitations.</li>
+            <li>The system will revise the schedules based on whether or not the guests accept the invitation.</li>
+          </ul>
+        </p>
+      </div>
+      <div class="service">
+        <i class="fa fa-bullseye fa-3x"></i>
+        <h3>Focus Mode</h3>
+        <p>
+          <ul>
+            <li>As mentioned above, the functionality enables users to activate the "Focus Mode" feature within their designated time intervals.</li>
+            <li>The Focus Mode feature enables users to engage solely with a designated individual or team, thereby preventing other potential sources of interruption.</li>
+            <li>To maintain an uninterrupted focus, the temporary disabling of notifications from other users will be implemented.</li>
+          </ul>
+        </p>
+      </div>
+      <div class="service">
+        <i class="fa fa-user fa-3x"></i>
+        <h3>User Scheduling and Profile:</h3>
+        <p>
+          <ul>
+            <li>Individual users can generate a personal profile and establish their respective availability.</li>
+            <li>Individuals can arrange designated intervals and indicate the length of time during which they are accessible.</li>
+            <li>Users can establish their preferences regarding the activities that pique their interest.</li>
+          </ul>
+        </p>
+      </div> 
+      <br><br><br>
+    </div>
+  </div>
+</section>
+
+
+
+  </div>
+
+<section id="sec1">
+   <?php include 'footer.php';?>
+</section>
+  
+  
+</body>
+</html>
