@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin-bottom:0;
+    }
+    footer {
+      background-color: #F8C767;
+      color: black;
+      text-align: center;
+      height: 300px;
+    
+    }
+    footer a {
+      color: black;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #fff;
+    }
+
+    .about{
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .p1 {
+      color: black;
+      width: 500px;
+      margin-left: 125px;
+    }
+
+    .p2 {
+      float: left;
+      color: black;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+
+    .header2{
+      text-align: right;
+      margin-right: 200px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .footer-section {
+      flex-basis: 50%;
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      text-align: right ;
+      margin-right: 170px;
+    }
+    .footer-links li {
+      margin-bottom: 5px;
+
+    }
+    .social-icons {
+      list-style: none;
+      padding: 0;
+      float: right;
+      margin-top: 20px;
+    }
+    .social-icons li {
+      display: inline-block;
+      margin-right: 5px;
+    }
+    .social-icons a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      background-color: #eceeef;
+      color: #818a91;
+      font-size: 16px;
+      border-radius: 100%;
+      transition: background-color 0.2s linear;
+      
+    }
+    .social-icons a:hover {
+      background-color: #29aafe;
+      color: #fff;
+    }
+    .social-icons .facebook:hover {
+      background-color: #3b5998;
+    }
+    .social-icons .twitter:hover {
+      background-color: #00aced;
+    }
+
+
+  </style>
+</head>
+<body>
+  <footer>
+    <br>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h1 class="about">About</h1>
+        <p class="p1">DND is a web application designed to address this challenge by providing a platform for social groups to integrate and coordinate their schedules with ease. Unlike conventional video conference applications, DND offers users the unique ability to focus their time and attention on specific individuals or groups, promoting sustained concentration on relevant topics. </p>
+      </div>
+      <div class="footer-section">
+        <h1 class="header2">Quick Links</h1>
+        <ul class="footer-links">
+          <li><a href="main_index.php">Home</a></li>
+          <li><a href="main_about.php">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+      <hr size="3" width="100%" color="black">
+    <div>
+      <p class="p2">2023 All Rights Reserved by DND</p>
+      <ul class="social-icons">
+        <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+  </footer>
+</body>
+</html>
