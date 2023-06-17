@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Appointment System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      margin-left: auto;
+      margin-right: auto;
+
+    }
+
+    .container2 {
+      width: 1000px;
+      position: absolute;
+      left: 280px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 80px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header1 {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 50px;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="time"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #e4e4e4;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    input[type="submit"] {
+      background-color: #D79922;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 830px;
+    }
+
+
+    #calendar {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <?php include 'Navbar.php';?>
+  <div class="container2">
+    <div class="container">
+      <form method="post" action="event_database.php">
+        <section id="sec1">
+          <h1 class="header1">AVAILABILITY</h1>
+          <?php include 'Calendar3.php';?>
+        </section>
+
+        <label for="name">Event Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Time</label>
+        <input type="time" id="time" name="time" required>
+
+        <label for="type">Event Type</label>
+        <select id="type" name="type">
+          <option value="Meeting">Meeting</option>
+          <option value="Conference">Conference</option>
+          <option value="Appointment">Appointment</option>
+          <option value="Seminar">Seminar</option>
+        </select>
+
+        <label for="location">Location</label>
+        <select id="location" name="location">
+          <option value="Google Meet">Google Meet</option>
+          <option value="Zoom">Zoom</option>
+          <option value="Microsoft">Microsoft Teams</option>
+          <option value="Skype">Skype</option>
+        </select>
+
+        <label for="note">Note:</label>
+        <textarea id="note" name="note" rows="6" required></textarea>
+
+        <input type="submit" value="Book Appointment">
+      </form>
+    </div>
+  </div>
+<script>
+  // Retrieve available dates from the server
+  var dateInput = document.getElementById("date");
+
+  // Make an AJAX request to fetch the available dates from the server
+  function fetchAvailableDates() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        var availableDates = JSON.parse(xhr.responseText);
+
+        // Listen to the input event and disable dates without availability
+        dateInput.addEventListener("input", function () {
+          var selectedDate = new Date(this.value);
+          var day = selectedDate.getDate();
+          var month = selectedDate.getMonth() + 1;
+          var year = selectedDate.getFullYear();
+          var formattedDate =
+            year +
+            "-" +
+            month.toString().padStart(2, "0") +
+            "-" +
+            day.toString().padStart(2, "0");
+
+          if (availableDates.indexOf(formattedDate) === -1) {
+            this.value = ""; // Clear the input field if the selected date is not available
+            alert("This date is not available. Please choose another date.");
+          }
+        });
+      }
+    };
+
+    xhr.open("GET", "get_available_dates.php", true);
+    xhr.send();
+  }
+
+  // Fetch available dates when the page loads
+  fetchAvailableDates();
+</script>
